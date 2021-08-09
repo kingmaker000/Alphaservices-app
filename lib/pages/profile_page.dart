@@ -36,11 +36,11 @@ class _ProfilePageState extends State<ProfilePage> {
     //UserItem user=UserItem(profileImage: urlToFile() as File, index: 0);
     return Container(
       height: MediaQuery.of(context).size.height,
-      decoration: BoxDecoration(
-          gradient: LinearGradient(
-              colors: [Colors.blue, Colors.white],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight)),
+      // decoration: BoxDecoration(
+      //   gradient: LinearGradient(
+      //       colors: [Colors.blue, Colors.white],
+      //       begin: Alignment.topLeft,
+      //       end: Alignment.bottomRight)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

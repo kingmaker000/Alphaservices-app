@@ -23,17 +23,18 @@ class AlphaApp extends StatelessWidget {
         child: MaterialApp(
       theme: ThemeData(
         backgroundColor: Colors.blue[200],
-        fontFamily: 'Uchen',
+        fontFamily: 'Oswald',
       ),
       routes:{
         LoginPage.routename:(cntx) => LoginPage(),
         CreateAccount.routename:(cntx)=> CreateAccount(),
         HomePage.routename:(cntx) => HomePage(),
-        TypesOfServices.routename:(cntx) => TypesOfServices(),
-        VendorsListPage.routename:(cntx) =>VendorsListPage(),
-        ProfilePage.routename:(cntx) =>ProfilePage()
+        //TypesOfServices.routename:(cntx) => TypesOfServices(),
+        //VendorsListPage.routename:(cntx) =>VendorsListPage(),
+        ProfilePage.routename:(cntx) =>ProfilePage(),
+        TabScreen.routename: (cntx) =>TabScreen()
       },
-      home: TabScreen(),
+      home: LoginPage()//TabScreen(),
 
     )
     );

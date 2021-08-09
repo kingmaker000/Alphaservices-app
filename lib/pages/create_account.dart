@@ -44,13 +44,13 @@ class _CreateAccountState extends State<CreateAccount> {
       appBar: AppBar(
         title: Text('Create new account'),
         centerTitle: true,
-        backgroundColor: Color.fromRGBO(0, 204, 204, 2),
+        //backgroundColor: Color.fromRGBO(0, 204, 204, 2),
       ),
       body: Container(
         height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(colors: [Colors.white,Color.fromRGBO(0, 204, 204, 2)],begin: Alignment.topLeft,end: Alignment.bottomRight)
-        ),
+        //decoration: BoxDecoration(
+        //  gradient: LinearGradient(colors: [Colors.white,Color.fromRGBO(0, 204, 204, 2)],begin: Alignment.topLeft,end: Alignment.bottomRight)
+        //),
         child: Form(
           key: formkey,
           child: SingleChildScrollView(

@@ -1,9 +1,11 @@
+import 'package:alpha_app/pages/home_page.dart';
 import 'package:alpha_app/pages/vendors_list_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:page_transition/page_transition.dart';
 
 class BeautySection extends StatelessWidget {
   // const BeautySection({Key? key}) : super(key: key);
@@ -23,7 +25,16 @@ class BeautySection extends StatelessWidget {
   Widget pagebuilder(String url, String title, BuildContext context) {
     return InkWell(
       onTap: (){
-        Navigator.of(context).pushNamed(VendorsListPage.routename,arguments: title);
+        //Navigator.of(context).pushNamed(VendorsListPage.routename,arguments: title);
+        Navigator.push(context, PageTransition(
+          type: PageTransitionType.size,
+          curve: Curves.easeOutCubic,
+          alignment: Alignment.center,
+          child: VendorsListPage(title),
+          childCurrent: HomePage(),
+          duration: Duration(seconds: 1),
+          reverseDuration: Duration(seconds: 1)
+        ));
       },
       child: Container(
         child: Column(
@@ -62,9 +73,7 @@ class BeautySection extends StatelessWidget {
     final List<Widget> pages = saloonlist
         .map((value) => pagebuilder('${value['url']}', '${value['name']}', context))
         .toList();
-    return InkWell(
-      onTap: (){},
-      child: Container(
+    return Container(
         margin: EdgeInsets.all(10),
         padding: EdgeInsets.all(5),
         height: 200,
@@ -86,7 +95,6 @@ class BeautySection extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
+      );
   }
 }

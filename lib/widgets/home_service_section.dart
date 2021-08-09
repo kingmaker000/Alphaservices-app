@@ -1,8 +1,10 @@
+import 'package:alpha_app/pages/home_page.dart';
 import 'package:alpha_app/pages/vendors_list_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
+import 'package:page_transition/page_transition.dart';
 
 class HomeServiceSection extends StatelessWidget {
   //const HomeServiceSection({Key? key}) : super(key: key);
@@ -46,7 +48,12 @@ class HomeServiceSection extends StatelessWidget {
                   ),
               itemBuilder: (context,index) =>InkWell(
                 onTap: (){
-                  Navigator.of(context).pushNamed(VendorsListPage.routename,arguments: homeservicelist[index]['name']);
+                  //Navigator.of(context).pushNamed(VendorsListPage.routename,arguments: homeservicelist[index]['name']);
+                  Navigator.push(context, PageTransition(
+                    type: PageTransitionType.rightToLeft,
+                    child: VendorsListPage(homeservicelist[index]['name']),
+                    childCurrent: HomePage(),curve: Curves.elasticIn
+                  ));
                 },
                 child: Container(
                   //height: 20,

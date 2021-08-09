@@ -9,6 +9,7 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import '../widgets/categorygrid.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:path/path.dart';
 import 'package:flutter/services.dart' show ByteData, rootBundle;
 import '../presentation/my_flutter_app_icons.dart' as CustomIcons;
@@ -87,122 +88,123 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final dataprovider = Provider.of<CompanyData>(context);
     final catdata = dataprovider.getdata();
-    return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(colors: [Colors.white,Colors.lightBlueAccent],begin: Alignment.topLeft,end: Alignment.bottomRight)
-      ),
-      child: CustomScrollView(
-              slivers: [
-                SliverAppBar(
-                  expandedHeight: 135,backgroundColor: Colors.blue[100],
-                  pinned: true,
-                  floating: false,
-                  snap: false,collapsedHeight: 70,
-                  flexibleSpace: FlexibleSpaceBar(
-                    stretchModes: const <StretchMode>[
-                      StretchMode.zoomBackground,
-                      StretchMode.blurBackground,
-                      StretchMode.fadeTitle,
-                    ],
-                    centerTitle: true,
-                    background :
-                        Column(
-                          children: [
-                            ListTile(
-                              leading: Icon(Icons.location_on),
-                              title: Text('Location'),
-                              trailing: Icon(Icons.arrow_forward),
-                              onTap: () {},
-                            ),
-                            /*Container(
-                              width: double.infinity,
-                              height: 50,
-                              margin: EdgeInsets.all(10),
-                              padding: EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                  border: Border.all(width: 1, color: Colors.black54),color: Colors.white70),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Expanded(
-                                    child: TextFormField(
-                                      cursorColor: Colors.black54,
-                                      decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                        focusedBorder: InputBorder.none,
-                                        enabledBorder: InputBorder.none,
-                                        contentPadding: EdgeInsets.fromLTRB(10, 0, 10, 15),
-                                        hintText: 'Search service',
+    return Scaffold(
+      body: Container(
+        //decoration: BoxDecoration(
+         // gradient: LinearGradient(colors: [Colors.white,Colors.lightBlueAccent],begin: Alignment.topLeft,end: Alignment.bottomRight)
+       // ),
+        child: CustomScrollView(
+                slivers: [
+                  SliverAppBar(
+                    expandedHeight: 135,//backgroundColor: Colors.blue[100],
+                    pinned: true,
+                    floating: false,
+                    snap: false,collapsedHeight: 70,
+                    flexibleSpace: FlexibleSpaceBar(
+                      stretchModes: const <StretchMode>[
+                        StretchMode.zoomBackground,
+                        StretchMode.blurBackground,
+                        StretchMode.fadeTitle,
+                      ],
+                      centerTitle: true,
+                      background :
+                          Column(
+                            children: [
+                              ListTile(
+                                leading: Icon(Icons.location_on),
+                                title: Text('Location'),
+                                trailing: Icon(Icons.arrow_forward),
+                                onTap: () {},
+                              ),
+                              /*Container(
+                                width: double.infinity,
+                                height: 50,
+                                margin: EdgeInsets.all(10),
+                                padding: EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                    border: Border.all(width: 1, color: Colors.black54),color: Colors.white70),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Expanded(
+                                      child: TextFormField(
+                                        cursorColor: Colors.black54,
+                                        decoration: InputDecoration(
+                                          border: InputBorder.none,
+                                          focusedBorder: InputBorder.none,
+                                          enabledBorder: InputBorder.none,
+                                          contentPadding: EdgeInsets.fromLTRB(10, 0, 10, 15),
+                                          hintText: 'Search service',
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  IconButton(
-                                    icon: Icon(Icons.search),
-                                    onPressed: () {},
-                                  )
-                                ],
+                                    IconButton(
+                                      icon: Icon(Icons.search),
+                                      onPressed: () {},
+                                    )
+                                  ],
+                                ),
+                              ),*/
+                            ],
+                          ),
+                      title: Container(
+                        height: 30,
+                        //width: double.infinity,
+                        margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                        decoration: BoxDecoration(/*border: Border.all(width: 1,color: Colors.black87)*/color: Colors.white,borderRadius: BorderRadius.circular(10)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: TextFormField(
+                                cursorColor: Colors.black54,cursorWidth: 0.5,cursorHeight: 20,
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  enabledBorder: InputBorder.none,
+                                  contentPadding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                                  hintText: 'Search service',hintStyle: TextStyle(fontSize: 13),
+                                ),
                               ),
-                            ),*/
+                            ),
+                            IconButton(alignment: Alignment.centerRight,
+                                icon: Icon(Icons.search,size: 15,),
+                                onPressed: () {},
+                              ),
                           ],
                         ),
-                    title: Container(
-                      height: 30,
-                      //width: double.infinity,
-                      margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                      decoration: BoxDecoration(/*border: Border.all(width: 1,color: Colors.black87)*/color: Colors.white,borderRadius: BorderRadius.circular(10)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            child: TextFormField(
-                              cursorColor: Colors.black54,cursorWidth: 0.5,cursorHeight: 20,
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                focusedBorder: InputBorder.none,
-                                enabledBorder: InputBorder.none,
-                                contentPadding: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                                hintText: 'Search service',hintStyle: TextStyle(fontSize: 13),
-                              ),
-                            ),
-                          ),
-                          IconButton(alignment: Alignment.centerRight,
-                              icon: Icon(Icons.search,size: 15,),
-                              onPressed: () {},
-                            ),
-                        ],
                       ),
                     ),
                   ),
-                ),
-                SliverList(delegate: SliverChildListDelegate([
-                  // SizedBox(
-                  //   height: 10,
-                  // ),
-                  Divider(),
-                  Container(
-                    height: 200,
-                    //padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Colors.white54),
-                    width: double.infinity,
-                    margin: EdgeInsets.all(10),
-                    child: PageView(
-                      pageSnapping: false,
-                      children: pages,
-                      scrollDirection: Axis.horizontal,
-                      allowImplicitScrolling: true,
-                      physics: ScrollPhysics(parent: ScrollPhysics()),
+                  SliverList(delegate: SliverChildListDelegate([
+                    // SizedBox(
+                    //   height: 10,
+                    // ),
+                    Divider(),
+                    Container(
+                      height: 200,
+                      //padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Colors.white54),
+                      width: double.infinity,
+                      margin: EdgeInsets.all(10),
+                      child: PageView(
+                        children: pages,
+                        scrollDirection: Axis.horizontal,
+                        allowImplicitScrolling: true,
+                        physics: ScrollPhysics(parent: ScrollPhysics()),
+                      ),
                     ),
-                  ),
-                  Divider(),
-                  CategoryGrid(categorylist: categories),
-                  Divider(),
-                  BeautySection(),
-                  Divider(),
-                  HomeServiceSection(),
-                ]))
-              ],
-            ),
+                    Divider(),
+                    CategoryGrid(categorylist: categories),
+                    Divider(),
+                    BeautySection(),
+                    Divider(),
+                    HomeServiceSection(),
+                  ]))
+                ],
+              ),
+      ),
     );
   }
 }

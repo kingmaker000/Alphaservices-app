@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 class TabScreen extends StatefulWidget {
   //const TabScreen({Key? key}) : super(key: key);
+  static const routename='/tabscreen';
 
 
   @override
@@ -38,7 +39,7 @@ class _TabScreenState extends State<TabScreen> {
         bottomNavigationBar:  Theme(
           data: Theme.of(context).copyWith(
             // sets the background color of the `BottomNavigationBar`
-              canvasColor: Color.fromRGBO(0, 204, 204, 2),
+              canvasColor: Colors.blue,
               // sets the active color of the `BottomNavigationBar` if `Brightness` is light
               primaryColor: Colors.red,
               textTheme: Theme

@@ -7,6 +7,9 @@ import '../dummy_data/companydata.dart';
 class VendorsListPage extends StatefulWidget {
   //const VendorsListPage({Key? key}) : super(key: key);
   static const routename = '/vendors-list-page';
+  final servicesection;
+
+  VendorsListPage(this.servicesection);
 
   @override
   State<VendorsListPage> createState() => _VendorsListPageState();
@@ -15,18 +18,18 @@ class VendorsListPage extends StatefulWidget {
 class _VendorsListPageState extends State<VendorsListPage> {
   @override
   Widget build(BuildContext context) {
-    final servicesection = ModalRoute.of(context)!.settings.arguments as String;
+    //final servicesection = ModalRoute.of(context)!.settings.arguments as String;
     final _companData = Provider.of<CompanyData>(context);
     final serviceprovider = _companData.findbysection(
-        servicesection); //_companData.where((element) => element.section==servicesection) as Companyitem;
+        widget.servicesection); //_companData.where((element) => element.section==servicesection) as Companyitem;
     return SafeArea(
         child: Scaffold(
-      backgroundColor: Color.fromRGBO(153, 205, 205, 1),
+      //backgroundColor: Color.fromRGBO(153, 205, 205, 1),
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
             expandedHeight: 350,
-            backgroundColor: Color.fromRGBO(0, 204, 204, 2),
+            //backgroundColor: Color.fromRGBO(0, 204, 204, 2),
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
               background: ShaderMask(
